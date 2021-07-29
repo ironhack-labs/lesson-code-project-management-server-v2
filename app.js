@@ -13,8 +13,8 @@ app.use("/api", allRoutes);
 const projectRouter = require("./routes/project.routes");
 app.use("/api", projectRouter);
 
-const taskRouter = require("./routes/task.routes"); // <== IMPORT
-app.use("/api", taskRouter); // <== ADD
+const taskRouter = require("./routes/task.routes");
+app.use("/api", taskRouter);
 
 require("./error-handling")(app);
 
