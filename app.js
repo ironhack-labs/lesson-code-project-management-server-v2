@@ -10,8 +10,11 @@ require("./config")(app);
 const allRoutes = require("./routes");
 app.use("/api", allRoutes);
 
-const projectRouter = require("./routes/project.routes"); // <== IMPORT
-app.use("/api", projectRouter); // <== ADD
+const projectRouter = require("./routes/project.routes");
+app.use("/api", projectRouter);
+
+const taskRouter = require("./routes/task.routes"); // <== IMPORT
+app.use("/api", taskRouter); // <== ADD
 
 require("./error-handling")(app);
 
