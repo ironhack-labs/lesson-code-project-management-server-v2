@@ -19,9 +19,6 @@ We will start our project by first documenting all of the routes and data models
 | HTTP verb | URL                  | Request body | Action                     |
 | --------- | -------------------- | ------------ | -------------------------- |
 | POST      | `/api/tasks`         | JSON         | Adds a new task            |
-| GET       | `/api/tasks/:taskId` | (empty)      | Returns the specified task |
-| PUT       | `/api/tasks/:taskId` | JSON         | Edits the specified task   |
-| DELETE    | `/api/tasks/:taskId` | (empty)      | Deletes the specified task |
 
 <hr>
 
