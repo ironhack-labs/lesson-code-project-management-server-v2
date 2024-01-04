@@ -16,7 +16,10 @@ router.post("/tasks", (req, res, next) => {
       });
     })
     .then((response) => res.json(response))
-    .catch((err) => res.json(err));
+    .catch((err) => {
+      console.log("Error while creating the task", err);
+      res.status(500).json({ message: "Error while creating the task" });
+    });
 });
 
 module.exports = router;
