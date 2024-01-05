@@ -11,7 +11,10 @@ router.post("/projects", (req, res, next) => {
 
   Project.create({ title, description, tasks: [] })
     .then((response) => res.json(response))
-    .catch((err) => res.json(err));
+    .catch((err) => {
+      console.log("Error while creating the project", err);
+      res.status(500).json({ message: "Error while creating the project" });
+    });
 });
 
 //  GET /api/projects -  Retrieves all of the projects
@@ -19,7 +22,10 @@ router.get("/projects", (req, res, next) => {
   Project.find()
     .populate("tasks")
     .then((allProjects) => res.json(allProjects))
-    .catch((err) => res.json(err));
+    .catch((err) => {
+      console.log("Error while getting the projects", err);
+      res.status(500).json({ message: "Error while getting the projects" });
+    });
 });
 
 //  GET /api/projects/:projectId -  Retrieves a specific project by id
@@ -36,7 +42,10 @@ router.get("/projects/:projectId", (req, res, next) => {
   Project.findById(projectId)
     .populate("tasks")
     .then((project) => res.status(200).json(project))
-    .catch((error) => res.json(error));
+    .catch((err) => {
+      console.log("Error while retrieving the project", err);
+      res.status(500).json({ message: "Error while retrieving the project" });
+    });
 });
 
 // PUT  /api/projects/:projectId  -  Updates a specific project by id
@@ -50,7 +59,10 @@ router.put("/projects/:projectId", (req, res, next) => {
 
   Project.findByIdAndUpdate(projectId, req.body, { new: true })
     .then((updatedProject) => res.json(updatedProject))
-    .catch((error) => res.json(error));
+    .catch((err) => {
+      console.log("Error while updating the project", err);
+      res.status(500).json({ message: "Error while updating the project" });
+    });
 });
 
 // DELETE  /api/projects/:projectId  -  Deletes a specific project by id
@@ -68,7 +80,10 @@ router.delete("/projects/:projectId", (req, res, next) => {
         message: `Project with ${projectId} is removed successfully.`,
       })
     )
-    .catch((error) => res.json(error));
+    .catch((err) => {
+      console.log("Error while deleting the project", err);
+      res.status(500).json({ message: "Error while deleting the project" });
+    });
 });
 
 module.exports = router;
